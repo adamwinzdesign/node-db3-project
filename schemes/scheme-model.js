@@ -5,9 +5,9 @@ module.exports = {
   findById,
   findSteps,
   add,
-  // addStep,
-  // update,
-  // remove
+  addStep,
+  update,
+  remove
 }
 
 function find() {
@@ -35,4 +35,22 @@ function findSteps(id) {
 // add scheme
 function add(scheme) {
   return schemeDB('schemes').insert(scheme, 'id')
+}
+
+// add step to scheme, given scheme id
+// body will have step_number and instructions, scheme_id will be in req.params
+function addStep(id) {
+
+}
+
+function update(id, changes) {
+  return schemeDB('schemes')
+    .where({ id })
+    .update(changes);
+}
+
+function remove(id) {
+  return schemeDB('schemes')
+    .where({ id })
+    .del()
 }
